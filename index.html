@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Mining Engineering | IIT Kharagpur</title>
+    <meta name="description" content="Premier institute for mining education, research, and innovation in India since 1956">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ===== Header & Navigation ===== -->
+    <header class="sticky-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="IIT KGP Logo" class="logo">
+                    <div class="logo-text">
+                        <h1>Department of <span>Mining Engineering</span></h1>
+                        <p>Indian Institute of Technology Kharagpur</p>
+                    </div>
+                </a>
+            </div>
+            
+            <nav id="navbar">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="about.html" class="nav-link">About </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html#history">History</a></li>
+                            <li><a href="about.html#vision">Vision & Mission</a></li>
+                            <li><a href="about.html#hod-message">HOD's Message</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="faculty.html" class="nav-link">Faculty</a></li>
+                    <li class="dropdown">
+                        <a href="academics.html" class="nav-link">Academics </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="courses.html">Courses</a></li>
+                            <li><a href="calculators.html">Formula Calculators</a></li>
+                            <li><a href="equipment.html">Mine Equipment</a></li>
+                            <li><a href="mechinary.html">Mine Mchinary</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a href="research.html" class="nav-link">Research</a></li>
+                    <li><a href="facilities.html" class="nav-link">Facilities</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-buttons">
+                        <button id="searchToggle" class="nav-icon"><i class="fas fa-search"></i></button>
+                        <button id="darkModeToggle" class="nav-icon"><i class="fas fa-moon"></i></button>
+                    </li>
+                </ul>
+                
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+            
+            <!-- Search Bar -->
+            <div class="search-bar" id="searchBar">
+                <form action="search.html" method="get">
+                    <input type="text" placeholder="Search..." name="query">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <button type="button" id="closeSearch"><i class="fas fa-times"></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Hero Section ===== -->
+    <section class="hero">
+        <div class="hero-slider">
+            <!-- Slide 1 -->
+            <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/hero-mining.jpg');">
+                <div class="hero-content animate__animated animate__fadeIn">
+                    <h2 data-aos="fade-up">Advancing Mining Technology Since 1956</h2>
+                    <p data-aos="fade-up" data-aos-delay="100">India's premier institute for mining education, research, and innovation</p>
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
+                        <a href="about.html" class="btn btn-primary">Explore Department</a>
+                        <a href="virtual-tour.html" class="btn btn-secondary">Virtual Tour <i class="fas fa-vr-cardboard"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/hero-research.jpg');">
+                <div class="hero-content">
+                    <h2>Pioneering Research in Mineral Exploration</h2>
+                    <p>Cutting-edge research with industry collaboration and global impact</p>
+                    <div class="hero-buttons">
+                        <a href="research.html" class="btn btn-primary">Research Areas</a>
+                        <a href="publications.html" class="btn btn-secondary">Recent Publications</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/hero-students.jpg');">
+                <div class="hero-content">
+                    <h2>Shaping Future Mining Leaders</h2>
+                    <p>Comprehensive programs with hands-on training and industry exposure</p>
+                    <div class="hero-buttons">
+                        <a href="academics.html" class="btn btn-primary">Academic Programs</a>
+                        <a href="placements.html" class="btn btn-secondary">Placement Records</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider-dots"></div>
+            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <!-- Quick Stats -->
+        <div class="quick-stats" data-aos="fade-up">
+            <div class="stat-item">
+                <div class="stat-number" id="yearsCounter">67+</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="facultyCounter">25+</div>
+                <div class="stat-label">Faculty Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="researchCounter">150+</div>
+                <div class="stat-label">Research Projects</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="alumniCounter">2000+</div>
+                <div class="stat-label">Alumni Network</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== About Department Section ===== -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>About the Department</h2>
+                <div class="divider"></div>
+                <p>The Department of Mining Engineering at IIT Kharagpur is one of the oldest and most prestigious mining departments in India, with a rich legacy of academic excellence and industry contribution.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Legacy of Innovation</h3>
+                    <p>Established in 1956, our department has been at the forefront of mining education and research in India. We combine traditional mining knowledge with modern technological advancements to address contemporary challenges in mineral resource extraction.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Comprehensive Programs</h4>
+                            <p>Offering B.Tech, M.Tech, M.Sc, and Ph.D. programs with specialized electives</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-flask"></i>
+                            <h4>Research Excellence</h4>
+                            <p>State-of-the-art labs and funded projects from DST, MoES, and industry partners</p>
+                        </div>
+                    </div>
+                    
+                    <a href="about.html" class="btn btn-outline">Learn More About Us</a>
+                </div>
+                
+                <div class="about-image" data-aos="fade-left">
+                    <img src="assets/images/department-building.jpg" alt="Mining Engineering Department Building" class="main-image">
+                    <div class="image-badge animate__animated animate__pulse animate__infinite">
+                        <i class="fas fa-award"></i>
+                        <span>Ranked #1 in India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Programs Section ===== -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Academic Programs</h2>
+                <div class="divider"></div>
+                <p>Our comprehensive curriculum is designed to prepare students for leadership roles in the mining industry, research organizations, and academia.</p>
+            </div>
+            
+            <div class="programs-grid">
+                <!-- B.Tech Program -->
+                <div class="program-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="program-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>B.Tech in Mining Engineering</h3>
+                    <p>4-year undergraduate program with focus on fundamental and applied aspects of mining</p>
+                    <ul class="program-details">
+                        <li><i class="fas fa-users"></i> Intake: 60 students/year</li>
+                        <li><i class="fas fa-book"></i> 180+ credits curriculum</li>
+                        <li><i class="fas fa-industry"></i> 6-month industry internship</li>
+                    </ul>
+                    <a href="btech.html" class="btn btn-small">Program Details</a>
+                </div>
+                
+                <!-- M.Tech Program -->
+                <div class="program-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="program-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>M.Tech Programs</h3>
+                    <p>2-year postgraduate programs with specialization options</p>
+                    <ul class="program-details">
+                        <li><i class="fas fa-gem"></i> Mineral Engineering</li>
+                        <li><i class="fas fa-mountain"></i> Rock Mechanics</li>
+                        <li><i class="fas fa-robot"></i> Mine Mechanization</li>
+                    </ul>
+                    <a href="mtech.html" class="btn btn-small">Specializations</a>
+                </div>
+                
+                <!-- Ph.D Program -->
+                <div class="program-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="program-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Ph.D Research Programs</h3>
+                    <p>Doctoral programs for cutting-edge research in mining technology</p>
+                    <ul class="program-details">
+                        <li><i class="fas fa-money-bill-wave"></i> Fellowships available</li>
+                        <li><i class="fas fa-globe"></i> International collaborations</li>
+                        <li><i class="fas fa-chart-line"></i> High-impact publications</li>
+                    </ul>
+                    <a href="phd.html" class="btn btn-small">Research Areas</a>
+                </div>
+            </div>
+            
+            <div class="text-center" data-aos="fade-up">
+                <a href="academics.html" class="btn btn-primary">Explore All Academic Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Research Highlights Section ===== -->
+    <section class="research-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Research Highlights</h2>
+                <div class="divider"></div>
+                <p>Our faculty and students are engaged in groundbreaking research addressing critical challenges in the mining sector.</p>
+            </div>
+            
+            <div class="research-tabs" data-aos="fade-up">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="sustainable">Sustainable Mining</button>
+                    <button class="tab-btn" data-tab="automation">Mine Automation</button>
+                    <button class="tab-btn" data-tab="safety">Safety Technologies</button>
+                    <button class="tab-btn" data-tab="processing">Mineral Processing</button>
+                </div>
+                
+                <div class="tab-contents">
+                    <!-- Sustainable Mining Tab -->
+                    <div class="tab-content active" id="sustainable">
+                        <div class="research-content">
+                            <div class="research-text">
+                                <h3>Sustainable Mining Practices</h3>
+                                <p>Developing eco-friendly mining techniques that minimize environmental impact while maximizing resource recovery. Our research focuses on:</p>
+                                <ul>
+                                    <li>Green mining technologies</li>
+                                    <li>Mine reclamation strategies</li>
+                                    <li>Water conservation in mining</li>
+                                    <li>Carbon footprint reduction</li>
+                                </ul>
+                                <a href="sustainable-mining.html" class="btn btn-outline">View Projects</a>
+                            </div>
+                            <div class="research-image">
+                                <img src="assets/images/sustainable-mining.jpg" alt="Sustainable Mining Research">
+                                <div class="research-funding">
+                                    <span>Funded by: Ministry of Environment, Govt. of India</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other tabs content would go here -->
+                    <div class="tab-content" id="automation">
+                        <!-- Mine Automation content -->
+                    </div>
+                    
+                    <div class="tab-content" id="safety">
+                        <!-- Safety Technologies content -->
+                    </div>
+                    
+                    <div class="tab-content" id="processing">
+                        <!-- Mineral Processing content -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="research-stats" data-aos="fade-up">
+                <div class="stat-card">
+                    <div class="stat-number">₹25+ Crore</div>
+                    <div class="stat-label">Research Funding</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Patents Filed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Industry Collaborations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== News & Events Section ===== -->
+    <section class="news-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>News & Events</h2>
+                <div class="divider"></div>
+                <p>Stay updated with the latest happenings in our department</p>
+            </div>
+            
+            <div class="news-container">
+                <!-- Main News -->
+                <div class="main-news" data-aos="fade-right">
+                    <div class="news-card featured">
+                        <div class="news-image">
+                            <img src="assets/images/news-symposium.jpg" alt="Mining Symposium">
+                            <div class="news-badge">Featured Event</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> June 10-12, 2024</span>
+                                <span class="news-location"><i class="fas fa-map-marker-alt"></i> IIT Kharagpur</span>
+                            </div>
+                            <h3>International Symposium on Advanced Mining Technologies</h3>
+                            <p>Join global experts discussing the future of mining with focus on AI, automation, and sustainability. Keynote speakers from Australia, Canada, and South Africa.</p>
+                            <a href="symposium-2024.html" class="btn btn-small">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Secondary News -->
+                <div class="secondary-news" data-aos="fade-left">
+                    <!-- News 1 -->
+                    <div class="news-card horizontal">
+                        <div class="news-image">
+                            <img src="assets/images/news-grant.jpg" alt="Research Grant">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">May 15, 2024</span>
+                                <span class="news-category">Research</span>
+                            </div>
+                            <h4>New Sustainable Mining Project Funded</h4>
+                            <p>Prof. A. Sharma secures ₹2.5 crore grant for eco-friendly mining techniques from DST.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- News 2 -->
+                    <div class="news-card horizontal">
+                        <div class="news-image">
+                            <img src="assets/images/news-placement.jpg" alt="Placements">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">April 28, 2024</span>
+                                <span class="news-category">Placements</span>
+                            </div>
+                            <h4>100% Summer Internship Placement</h4>
+                            <p>Our B.Tech students secure internships with leading mining companies including Coal India and Vedanta.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- News 3 -->
+                    <div class="news-card horizontal">
+                        <div class="news-image">
+                            <img src="assets/images/news-award.jpg" alt="Award">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">April 15, 2024</span>
+                                <span class="news-category">Achievement</span>
+                            </div>
+                            <h4>Best Paper Award at MineTech 2024</h4>
+                            <p>PhD student Rohan Mehta wins best paper award for innovative work on mine safety.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" data-aos="fade-up">
+                <a href="news.html" class="btn btn-primary">View All News & Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Facilities Section ===== -->
+    <section class="facilities-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Facilities</h2>
+                <div class="divider"></div>
+                <p>World-class laboratories and research facilities supporting cutting-edge mining education</p>
+            </div>
+            
+            <div class="facilities-slider" data-aos="fade-up">
+                <!-- Facility 1 -->
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="assets/images/lab-rockmech.jpg" alt="Rock Mechanics Lab">
+                        <div class="facility-overlay">
+                            <h3>Rock Mechanics Laboratory</h3>
+                            <a href="rock-mechanics-lab.html" class="btn btn-small">Explore Lab</a>
+                        </div>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Rock Mechanics Laboratory</h3>
+                        <p>Equipped with advanced testing systems for rock strength characterization and stability analysis.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 2 -->
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="assets/images/lab-automation.jpg" alt="Mine Automation Lab">
+                        <div class="facility-overlay">
+                            <h3>Mine Automation Center</h3>
+                            <a href="automation-center.html" class="btn btn-small">Explore Lab</a>
+                        </div>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Mine Automation Center</h3>
+                        <p>State-of-the-art facility for autonomous mining equipment and IoT applications in mining.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 3 -->
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="assets/images/lab-processing.jpg" alt="Mineral Processing Lab">
+                        <div class="facility-overlay">
+                            <h3>Mineral Processing Lab</h3>
+                            <a href="mineral-processing.html" class="btn btn-small">Explore Lab</a>
+                        </div>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Mineral Processing Lab</h3>
+                        <p>Advanced equipment for beneficiation, comminution, and mineral separation techniques.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 4 -->
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="assets/images/lab-simulation.jpg" alt="Mine Simulation Lab">
+                        <div class="facility-overlay">
+                            <h3>Mine Simulation Center</h3>
+                            <a href="simulation-center.html" class="btn btn-small">Explore Lab</a>
+                        </div>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Mine Simulation Center</h3>
+                        <p>Virtual reality environment for mine planning, safety training, and equipment operation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" data-aos="fade-up">
+                <a href="labs.html" class="btn btn-primary">View All Facilities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Testimonials Section ===== -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>What Our Alumni Say</h2>
+                <div class="divider"></div>
+                <p>Our graduates are making an impact across the global mining industry</p>
+            </div>
+            
+            <div class="testimonials-slider" data-aos="fade-up">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>The strong technical foundation I received at IIT KGP Mining has been instrumental in my career. The hands-on training and industry exposure set us apart.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="assets/images/alumni1.jpg" alt="Alumni">
+                        <div class="author-info">
+                            <h4>Dr. Anil Kumar</h4>
+                            <p>Chief Geologist, Rio Tinto</p>
+                            <p>B.Tech '98, Ph.D '03</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>The research culture and faculty mentorship at IIT KGP prepared me for challenges in the mining industry. The department's reputation opened many doors for me.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="assets/images/alumni2.jpg" alt="Alumni">
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>VP Operations, Coal India</p>
+                            <p>M.Tech '08</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>As an international student, I found the mining program at IIT KGP to be world-class. The blend of theory and practical knowledge was perfect for my career growth.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="assets/images/alumni3.jpg" alt="Alumni">
+                        <div class="author-info">
+                            <h4>Michael Johnson</h4>
+                            <p>Mine Planning Engineer, BHP</p>
+                            <p>B.Tech '12</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" data-aos="fade-up">
+                <a href="alumni.html" class="btn btn-outline">Explore Alumni Network</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Call to Action Section ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Begin Your Mining Journey?</h2>
+                <p>Explore our programs, connect with faculty, or schedule a visit to our department</p>
+                <div class="cta-buttons">
+                    <a href="admissions.html" class="btn btn-primary">Admission Process</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- About Column -->
+                <div class="footer-column">
+                    <h3>About the Department</h3>
+                    <p>The Department of Mining Engineering at IIT Kharagpur is a center of excellence in mining education and research, producing leaders for the mineral industry since 1956.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links Column -->
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="research.html">Research</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="labs.html">Facilities</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Column -->
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Department of Mining Engineering, IIT Kharagpur, West Bengal 721302, India</li>
+                        <li><i class="fas fa-phone"></i> +91-3222-282456</li>
+                        <li><i class="fas fa-envelope"></i> mining@iitkgp.ac.in</li>
+                        <li><i class="fas fa-fax"></i> +91-3222-282456</li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter Column -->
+                <div class="footer-column">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for the latest news and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2024 Department of Mining Engineering, IIT Kharagpur. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Back to Top Button -->
+        <button id="backToTop" class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
+
+    <!-- ===== JavaScript ===== -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Slick Slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    
+    <!-- Counter Up -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dark-mode.js"></script>
+    <script src="assets/js/sliders.js"></script>
+    
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Initialize counters
+        jQuery(document).ready(function($) {
+            $('.stat-number').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+    </script>
+</body>
+</html>

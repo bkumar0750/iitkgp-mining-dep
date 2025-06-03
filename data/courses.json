@@ -1,0 +1,40 @@
+{
+    "ug": [
+        {
+            "code": "MN3101",
+            "title": "Introduction to Mining Engineering",
+            "credits": 3,
+            "syllabus": "pdfs/ug/mn3101-syllabus.pdf",
+            "questionPapers": [
+                {"year": 2023, "link": "pdfs/ug/mn3101-2023.pdf"},
+                {"year": 2022, "link": "pdfs/ug/mn3101-2022.pdf"}
+            ],
+            "notes": "pdfs/ug/mn3101-notes.pdf"
+        },
+        {
+            "code": "MN3102",
+            "title": "Rock Mechanics",
+            "credits": 4,
+            "syllabus": "pdfs/ug/mn3102-syllabus.pdf",
+            "questionPapers": [
+                {"year": 2023, "link": "pdfs/ug/mn3102-2023.pdf"},
+                {"year": 2022, "link": "pdfs/ug/mn3102-2022.pdf"}
+            ]
+        }
+    ],
+    "pg": [
+        {
+            "code": "MN6101",
+            "title": "Advanced Mine Planning",
+            "credits": 4,
+            "syllabus": "pdfs/pg/mn6101-syllabus.pdf"
+        }
+    ],
+    "phd": [
+        {
+            "code": "MN9101",
+            "title": "Research in Sustainable Mining",
+            "credits": "Variable"
+        }
+    ]
+}

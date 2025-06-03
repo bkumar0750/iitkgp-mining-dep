@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Dr. Rajesh Kumar",
+        "title": "Professor & Head of Department",
+        "image": "professors/prof1.jpg",
+        "research": "Rock Mechanics, Mine Design",
+        "email": "rkumar@iitkgp.ac.in",
+        "phone": "+91-3222-282456",
+        "office": "Room 205, Mining Building",
+        "projects": [
+            "AI in Mine Safety (DST Funded)",
+            "Sustainable Underground Mining"
+        ],
+        "publications": 42
+    },
+    {
+        "id": 2,
+        "name": "Dr. Priya Sharma",
+        "title": "Associate Professor",
+        "image": "professors/prof2.jpg",
+        "research": "Mine Ventilation, Environmental Engineering",
+        "email": "priyas@iitkgp.ac.in",
+        "phone": "+91-3222-282457",
+        "office": "Room 310, Mining Building",
+        "projects": [
+            "Dust Control in Coal Mines",
+            "Renewable Energy Integration"
+        ],
+        "publications": 28
+    }
+]

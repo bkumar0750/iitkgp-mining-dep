@@ -1,0 +1,49 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "AI-Based Rock Fracture Prediction",
+            "pi": "Dr. A. Kumar",
+            "image": "research/project1.jpg",
+            "description": "Developing machine learning models to predict rock fractures in underground mines using seismic data.",
+            "status": "Ongoing",
+            "funding": "DST, ₹1.2 Crore",
+            "type": "funded",
+            "start": "2023",
+            "end": "2025"
+        },
+        {
+            "id": 2,
+            "title": "Solar-Powered Mine Ventilation",
+            "pi": "Dr. P. Sharma",
+            "image": "research/project2.jpg",
+            "description": "Designing hybrid solar-diesel ventilation systems for underground coal mines.",
+            "status": "Pilot Phase",
+            "funding": "Coal India Limited",
+            "type": "funded",
+            "start": "2022",
+            "end": "2024"
+        }
+    ],
+    "publications": [
+        {
+            "id": 1,
+            "title": "Deep Learning for Ore Grade Estimation",
+            "authors": "Kumar, A., et al.",
+            "journal": "International Journal of Mining Science",
+            "year": 2024,
+            "type": "journal",
+            "doi": "10.1016/j.ijms.2024.123456",
+            "pdf": "pdfs/pubs/pub1.pdf"
+        },
+        {
+            "id": 2,
+            "title": "IoT-Based Mine Safety System",
+            "authors": "Sharma, P., et al.",
+            "conference": "IEEE Mining Tech Conference 2023",
+            "year": 2023,
+            "type": "conference",
+            "pdf": "pdfs/pubs/pub2.pdf"
+        }
+    ]
+}

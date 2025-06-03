@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty | IIT KGP Mining</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/faculty.css">
+</head>
+<body>
+    <!-- Reuse Header from index.html -->
+    <header>
+        <div class="logo-container">
+            <img src="assets/images/logo.png" alt="IIT KGP Mining Logo" class="logo">
+            <h1>Department of <span>Mining Engineering</span></h1>
+        </div>
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faculty.html" class="active">Faculty</a></li>
+                <!-- Other nav items -->
+            </ul>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Faculty Page Content -->
+    <main class="faculty-page">
+        <section class="faculty-header">
+            <h2>Our Faculty</h2>
+            <p>Meet the distinguished professors guiding the future of mining technology</p>
+            <div class="search-box">
+                <input type="text" id="facultySearch" placeholder="Search professors...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </section>
+
+        <!-- Faculty Grid -->
+        <section class="faculty-grid" id="facultyGrid">
+            <!-- Professors will be loaded here via JavaScript -->
+        </section>
+    </main>
+
+    <!-- Reuse Footer from index.html -->
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/faculty.js"></script>
+</body>
+</html>

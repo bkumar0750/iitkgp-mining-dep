@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | IIT KGP Mining</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/courses.css">
+    <!-- MathJax for formula rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Reused Header -->
+    <header>
+        <div class="logo-container">
+            <img src="assets/images/logo.png" alt="IIT KGP Mining Logo" class="logo">
+            <h1>Department of <span>Mining Engineering</span></h1>
+        </div>
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Courses Page Content -->
+    <main class="courses-page">
+        <section class="courses-header">
+            <div class="header-content">
+                <h2>Academic Courses</h2>
+                <p>Explore our comprehensive UG, PG, and PhD programs with detailed course information</p>
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="ug">Undergraduate</button>
+                    <button class="tab-btn" data-tab="pg">Postgraduate</button>
+                    <button class="tab-btn" data-tab="phd">PhD</button>
+                </div>
+            </div>
+            <div class="header-image">
+                <img src="assets/images/course-banner.jpg" alt="Mining Engineering Students">
+            </div>
+        </section>
+
+        <!-- Courses Tabs Content -->
+        <section class="courses-content">
+            <!-- UG Courses -->
+            <div class="tab-content active" id="ug">
+                <h3>B.Tech in Mining Engineering</h3>
+                <div class="semester-tabs">
+                    <button class="semester-btn active" data-semester="1">1st Year</button>
+                    <button class="semester-btn" data-semester="2">2nd Year</button>
+                    <button class="semester-btn" data-semester="3">3rd Year</button>
+                    <button class="semester-btn" data-semester="4">4th Year</button>
+                    <button class="semester-btn" data-semester="5">5th Year</button>
+                </div>
+                <div class="course-grid" id="ugCourses">
+                    <!-- Course cards will be loaded via JS -->
+                </div>
+            </div>
+
+            <!-- PG Courses -->
+            <div class="tab-content" id="pg">
+                <h3>M.Tech Programs</h3>
+                <div class="specialization-tabs">
+                    <button class="specialization-btn active" data-specialization="mining">Mining Engineering</button>
+                    <button class="specialization-btn" data-specialization="rock">Rock Engineering</button>
+                    <button class="specialization-btn" data-specialization="mineral">Mineral Engineering</button>
+                </div>
+                <div class="course-grid" id="pgCourses">
+                    <!-- Course cards will be loaded via JS -->
+                </div>
+            </div>
+
+            <!-- PhD Courses -->
+            <div class="tab-content" id="phd">
+                <h3>PhD Research Areas</h3>
+                <div class="research-tabs">
+                    <button class="research-btn active" data-research="general">General Research Areas</button>
+                    <button class="research-btn" data-research="current">Current Projects</button>
+                </div>
+                <div class="course-grid" id="phdCourses">
+                    <!-- Course cards will be loaded via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Resources Modal -->
+        <div class="modal" id="resourcesModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="modalCourseTitle">Course Resources</h3>
+                <div class="course-meta">
+                    <span id="modalCourseCode">Course Code: MN101</span>
+                    <span id="modalCourseProf">Professor: Dr. S. Bhattacharya</span>
+                    <span id="modalCourseCredits">Credits: 3-0-0-6</span>
+                </div>
+                
+                <div class="resource-tabs">
+                    <button class="resource-tab active" data-resource="videos">Video Lectures</button>
+                    <button class="resource-tab" data-resource="notes">Lecture Notes</button>
+                    <button class="resource-tab" data-resource="books">Reference Books</button>
+                    <button class="resource-tab" data-resource="slides">Presentation Slides</button>
+                </div>
+                
+                <div class="resource-content">
+                    <!-- Video Lectures Section -->
+                    <div class="resource-section active" id="videos-section">
+                        <div class="video-grid">
+                            <div class="video-card">
+                                <div class="video-thumbnail">
+                                    <img src="assets/images/video-thumbnail1.jpg" alt="Lecture Video">
+                                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                                </div>
+                                <h4>Introduction to Mining Engineering</h4>
+                                <div class="video-meta">
+                                    <span class="video-duration">45:22</span>
+                                    <span class="video-date">Posted: 15 Jan 2023</span>
+                                </div>
+                                <p class="video-description">Fundamental concepts and historical overview of mining</p>
+                            </div>
+                            <div class="video-card">
+                                <div class="video-thumbnail">
+                                    <img src="assets/images/video-thumbnail2.jpg" alt="Lecture Video">
+                                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                                </div>
+                                <h4>Rock Mechanics Principles</h4>
+                                <div class="video-meta">
+                                    <span class="video-duration">52:10</span>
+                                    <span class="video-date">Posted: 22 Jan 2023</span>
+                                </div>
+                                <p class="video-description">Stress-strain relationships in rock formations</p>
+                            </div>
+                            <!-- More video cards -->
+                        </div>
+                    </div>
+                    
+                    <!-- Lecture Notes Section -->
+                    <div class="resource-section" id="notes-section">
+                        <div class="notes-list">
+                            <div class="note-item">
+                                <i class="fas fa-file-pdf"></i>
+                                <div class="note-info">
+                                    <h4>Chapter 1: Mining Methods</h4>
+                                    <p>Comprehensive notes on surface and underground mining techniques</p>
+                                    <div class="note-meta">
+                                        <span>Pages: 24</span>
+                                        <a href="#" class="download-btn">Download PDF (2.4MB)</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <i class="fas fa-file-pdf"></i>
+                                <div class="note-info">
+                                    <h4>Chapter 2: Mineral Processing</h4>
+                                    <p>Detailed explanation of mineral extraction and beneficiation processes</p>
+                                    <div class="note-meta">
+                                        <span>Pages: 32</span>
+                                        <a href="#" class="download-btn">Download PDF (3.1MB)</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- More note items -->
+                        </div>
+                    </div>
+                    
+                    <!-- Books Section -->
+                    <div class="resource-section" id="books-section">
+                        <div class="books-grid">
+                            <div class="book-card">
+                                <img src="assets/images/book1.jpg" alt="Textbook Cover">
+                                <div class="book-info">
+                                    <h4>Introductory Mining Engineering</h4>
+                                    <p class="book-author">Hartman, H.L. & Mutmansky, J.M.</p>
+                                    <p class="book-edition">2nd Edition, Wiley</p>
+                                    <div class="book-links">
+                                        <a href="#" class="library-link">Library Access</a>
+                                        <a href="#" class="purchase-link">Purchase</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-card">
+                                <img src="assets/images/book2.jpg" alt="Textbook Cover">
+                                <div class="book-info">
+                                    <h4>Rock Mechanics for Underground Mining</h4>
+                                    <p class="book-author">Brady, B.H.G. & Brown, E.T.</p>
+                                    <p class="book-edition">3rd Edition, Springer</p>
+                                    <div class="book-links">
+                                        <a href="#" class="library-link">Library Access</a>
+                                        <a href="#" class="purchase-link">Purchase</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- More book cards -->
+                        </div>
+                    </div>
+                    
+                    <!-- Slides Section -->
+                    <div class="resource-section" id="slides-section">
+                        <div class="slides-grid">
+                            <div class="slide-card">
+                                <img src="assets/images/slide-preview1.jpg" alt="Slide Preview">
+                                <div class="slide-info">
+                                    <h4>Week 1: Introduction</h4>
+                                    <div class="slide-meta">
+                                        <span>32 slides | PPTX</span>
+                                        <span>Last updated: 10 Jan 2023</span>
+                                    </div>
+                                    <a href="#" class="download-btn">Download</a>
+                                </div>
+                            </div>
+                            <div class="slide-card">
+                                <img src="assets/images/slide-preview2.jpg" alt="Slide Preview">
+                                <div class="slide-info">
+                                    <h4>Week 2: Drilling Techniques</h4>
+                                    <div class="slide-meta">
+                                        <span>28 slides | PPTX</span>
+                                        <span>Last updated: 17 Jan 2023</span>
+                                    </div>
+                                    <a href="#" class="download-btn">Download</a>
+                                </div>
+                            </div>
+                            <!-- More slide cards -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academic Formulas Section -->
+        <section class="formulas-section">
+            <div class="section-header">
+                <h2>Key Academic Formulas</h2>
+                <p>Essential formulas in Mining Engineering with detailed explanations</p>
+            </div>
+            <div class="formulas-container">
+                <!-- Formula 1 -->
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <h3>Rock Quality Designation (RQD)</h3>
+                        <div class="formula-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                    </div>
+                    <div class="formula-equation">
+                        \[ RQD = \left( \frac{\sum \text{Length of intact pieces > 10cm}}{\text{Total core length}} \right) \times 100\% \]
+                    </div>
+                    <div class="formula-explanation">
+                        <p>The Rock Quality Designation (RQD) is a measure of rock mass quality based on core recovery in drilling operations. It's calculated as the percentage of intact core pieces longer than 10cm in the total length of core run.</p>
+                        <ul class="formula-applications">
+                            <li>Used in rock mass classification systems</li>
+                            <li>Helps determine support requirements</li>
+                            <li>Indicates degree of fracturing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Formula 2 -->
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <h3>Ventilation Pressure Loss</h3>
+                        <div class="formula-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                    </div>
+                    <div class="formula-equation">
+                        \[ \Delta P = \frac{f L \rho v^2}{2 D} \]
+                    </div>
+                    <div class="formula-explanation">
+                        <p>The Darcy-Weisbach equation calculates pressure loss due to friction in mine ventilation systems, where:</p>
+                        <ul class="formula-variables">
+                            <li>ΔP = Pressure loss (Pa)</li>
+                            <li>f = Friction factor</li>
+                            <li>L = Duct length (m)</li>
+                            <li>ρ = Air density (kg/m³)</li>
+                            <li>v = Air velocity (m/s)</li>
+                            <li>D = Hydraulic diameter (m)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Formula 3 -->
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <h3>Pillar Strength Estimation</h3>
+                        <div class="formula-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                    </div>
+                    <div class="formula-equation">
+                        \[ \sigma_p = \sigma_c \left( 0.778 + 0.222 \frac{w}{h} \right) \]
+                    </div>
+                    <div class="formula-explanation">
+                        <p>The Obert-Duvall formula estimates the strength of rectangular pillars in underground mines, where:</p>
+                        <ul class="formula-variables">
+                            <li>σ<sub>p</sub> = Pillar strength (MPa)</li>
+                            <li>σ<sub>c</sub> = Intact rock strength (MPa)</li>
+                            <li>w = Pillar width (m)</li>
+                            <li>h = Pillar height (m)</li>
+                        </ul>
+                        <p>This empirical relationship shows that pillar strength increases with increasing width-to-height ratio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section class="resources-section">
+            <h2>Additional Learning Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Recommended Textbooks</h3>
+                    <ul>
+                        <li>Hartman, H.L. & Mutmansky, J.M. (2002). <em>Introductory Mining Engineering</em></li>
+                        <li>Brady, B.H.G. & Brown, E.T. (2004). <em>Rock Mechanics for Underground Mining</em></li>
+                        <li>Deshmukh, D.J. (2008). <em>Elements of Mining Technology</em></li>
+                        <li>Hustrulid, W.A. & Bullock, R.L. (2001). <em>Underground Mining Methods</em></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Software Tools</h3>
+                    <ul>
+                        <li><strong>MineSight</strong> - Comprehensive mine planning and design</li>
+                        <li><strong>Vulcan</strong> - Advanced 3D mine modeling and visualization</li>
+                        <li><strong>Surpac</strong> - Geological modeling and mine planning</li>
+                        <li><strong>AutoCAD Mining</strong> - Technical drawings and designs</li>
+                        <li><strong>FLAC3D</strong> - Numerical modeling for geotechnical analysis</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Online Courses</h3>
+                    <ul>
+                        <li><strong>NPTEL</strong>: Mining Engineering Courses by IIT Professors</li>
+                        <li><strong>Coursera</strong>: Introduction to Mining Engineering</li>
+                        <li><strong>edX</strong>: Sustainable Mining and Resource Management</li>
+                        <li><strong>Udemy</strong>: Geostatistics for Mining Engineers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="faculty.html">Faculty</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Department of Mining Engineering, IIT Kharagpur, West Bengal 721302</p>
+                <p><i class="fas fa-phone"></i> +91-3222-282324</p>
+                <p><i class="fas fa-envelope"></i> mining@iitkgp.ac.in</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Department of Mining Engineering, IIT Kharagpur. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/courses.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+    "formulas": [
+        {
+            "id": 1,
+            "name": "Rock Quality Designation (RQD)",
+            "formula": "RQD = (Sum of intact pieces > 10cm / Total core length) × 100",
+            "latex": "\\text{RQD} = \\frac{\\text{Sum of intact pieces > 10cm}}{\\text{Total core length}} \\times 100",
+            "year": 2,
+            "subject": "rock-mechanics",
+            "inputs": [
+                {"name": "core_length", "label": "Total core length (cm)", "type": "number"},
+                {"name": "intact_pieces", "label": "Sum of intact pieces >10cm (cm)", "type": "number"}
+            ],
+            "calculation": "return (intact_pieces / core_length) * 100;",
+            "unit": "%"
+        },
+        {
+            "id": 2,
+            "name": "Ventilation Pressure Loss",
+            "formula": "ΔP = (0.6 × v²) / (2 × g × D)",
+            "latex": "\\Delta P = \\frac{0.6 \\times v^2}{2 \\times g \\times D}",
+            "year": 3,
+            "subject": "mine-ventilation",
+            "inputs": [
+                {"name": "velocity", "label": "Air velocity (m/s)", "type": "number"},
+                {"name": "diameter", "label": "Duct diameter (m)", "type": "number"}
+            ],
+            "constants": [
+                {"name": "g", "value": 9.81, "description": "Gravity acceleration"}
+            ],
+            "calculation": "return (0.6 * Math.pow(velocity, 2)) / (2 * 9.81 * diameter);",
+            "unit": "m"
+        },
+        {
+      "id": 3,
+      "name": "Bond Work Index",
+      "formula": "W = 10*Wi*(1/√P80 - 1/√F80)",
+      "latex": "W = 10 \\times W_i \\times \\left(\\frac{1}{\\sqrt{P_{80}}} - \\frac{1}{\\sqrt{F_{80}}}\\right)",
+      "year": 4,
+      "subject": "mineral-processing",
+      "inputs": [
+        {"name": "wi", "label": "Bond Work Index (kWh/t)", "type": "number"},
+        {"name": "p80", "label": "Product size (μm)", "type": "number"},
+        {"name": "f80", "label": "Feed size (μm)", "type": "number"}
+      ],
+      "calculation": "return 10 * wi * ((1/Math.sqrt(p80)) - (1/Math.sqrt(f80)));",
+      "unit": "kWh/t"
+    }
+   
+    ]
+}

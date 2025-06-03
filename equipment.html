@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Equipment | IIT KGP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS will be placed here */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .equipment-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .equipment-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .equipment-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .equipment-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .equipment-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .equipment-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .equipment-info {
+            padding: 20px;
+        }
+
+        .equipment-category {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .equipment-category.drilling {
+            background-color: #ffeaa7;
+            color: #d35400;
+        }
+
+        .equipment-category.loading {
+            background-color: #a5d8ff;
+            color: #0984e3;
+        }
+
+        .equipment-category.hauling {
+            background-color: #b2f2bb;
+            color: #2b8a3e;
+        }
+
+        .equipment-category.safety {
+            background-color: #ffc9c9;
+            color: #c92a2a;
+        }
+
+        .equipment-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .equipment-desc {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .view-details {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-details:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            animation: modalFadeIn 0.5s ease;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        #modalImage {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .modal-content > h2 {
+            padding: 20px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+        }
+
+        .specs, .usage, .applications {
+            padding: 20px;
+        }
+
+        .specs h3, .usage h3, .applications h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .specs ul, .applications ul {
+            padding-left: 20px;
+        }
+
+        .specs li, .applications li {
+            margin-bottom: 8px;
+        }
+
+        .usage p {
+            margin-bottom: 15px;
+        }
+
+        .working-process {
+            padding: 20px;
+            background-color: #f8f9fa;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        .working-process h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .process-steps {
+            counter-reset: step-counter;
+        }
+
+        .process-step {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 20px;
+        }
+
+        .process-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .equipment-hero h1 {
+                font-size: 2rem;
+            }
+
+            .equipment-hero p {
+                font-size: 1rem;
+            }
+
+            .equipment-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .modal-content {
+                margin: 20px auto;
+                width: 95%;
+            }
+
+            #modalImage {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-btn {
+                width: 80%;
+                text-align: center;
+            }
+
+            .equipment-hero {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="equipment-page">
+        <section class="equipment-hero">
+            <h1>Mining Equipment & Machinery</h1>
+            <p>Explore the advanced tools and technologies that power modern mining operations</p>
+        </section>
+
+        <!-- Equipment Categories -->
+        <section class="category-tabs">
+            <button class="tab-btn active" data-category="all">All Equipment</button>
+            <button class="tab-btn" data-category="drilling">Drilling Equipment</button>
+            <button class="tab-btn" data-category="loading">Loading Equipment</button>
+            <button class="tab-btn" data-category="hauling">Hauling Equipment</button>
+            <button class="tab-btn" data-category="safety">Safety Equipment</button>
+        </section>
+
+        <!-- Equipment Grid -->
+        <div class="equipment-grid" id="equipmentGrid">
+            <!-- Drilling Equipment -->
+            <div class="equipment-card" data-category="drilling">
+                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rotary Drill Rig" class="equipment-img">
+                <div class="equipment-info">
+                    <span class="equipment-category drilling">Drilling</span>
+                    <h3 class="equipment-title">Rotary Drill Rig</h3>
+                    <p class="equipment-desc">High-capacity drilling machine for blast hole drilling in open-pit mines</p>
+                    <a href="#" class="view-details" data-id="1">View Details</a>
+                </div>
+            </div>
+
+            <div class="equipment-card" data-category="drilling">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Jumbo Drill" class="equipment-img">
+                <div class="equipment-info">
+                    <span class="equipment-category drilling">Drilling</span>
+                    <h3 class="equipment-title">Jumbo Drill</h3>
+                    <p class="equipment-desc">Hydraulic drilling machine for underground mining operations</p>
+                    <a href="#" class="view-details" data-id="2">View Details</a>
+                </div>
+            </div>
+
+            <!-- Loading Equipment -->
+            <div class="equipment-card" data-category="loading">
+                <img src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wheel Loader" class="equipment-img">
+                <div class="equipment-info">
+                    <span class="equipment-category loading">Loading</span>
+                    <h3 class="equipment-title">Wheel Loader</h3>
+                    <p class="equipment-desc">Versatile loading machine for material handling in mining operations</p>
+                    <a href="#" class="view-details" data-id="3">View Details</a>
+                </div>
+            </div>
+
+            <div class="equipment-card" data-category="loading">
+                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hydraulic Shovel" class="equipment-img">
+                <div class="equipment-info">
+                    <span class="equipment-category loading">Loading</span>
+                    <h3 class="equipment-title">Hydraulic Shovel</h3>
+                    <p class="equipment-desc">High-capacity excavator for loading overburden and minerals</p>
+                    <a href="#" class="view-details" data-id="4">View Details</a>
+                </div>
+            </div>
+
+            <!-- Hauling Equipment -->
+            <div class="equipment-card" data-category="hauling">
+                <img src="https://images.unsplash.com/photo-1601579530181-7e74b94b1d0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dump Truck" class="equipment-img">
+                <div class="equipment-info">
+                    <span class="equipment-category hauling">Hauling</span>
+                    <h3 class="equipment-title">Dump Truck</h3>
+                    <p class="equipment-desc">Heavy-duty truck for transporting mined materials</p>
+                    <a href="#" class="view-details" data-id="5">View Details</a>
+                </div>
+            </div>
+
+            <div class="equipment-card" data-category="hauling">
+                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Articulated Hauler" class="equipment-img">
+                <div class="equipment-info">
+                    <span class="equipment-category hauling">Hauling</span>
+                    <h3 class="equipment-title">Articulated Hauler</h3>
+                    <p class="equipment-desc">All-terrain hauler for rough mining conditions</p>
+                    <a href="#" class="view-details" data-id="6">View Details</a>
+                </div>
+            </div>
+
+            <!-- Safety Equipment -->
+            <div class="equipment-card" data-category="safety">
+                <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gas Detector" class="equipment-img">
+                <div class="equipment-info">
+                    <span class="equipment-category safety">Safety</span>
+                    <h3 class="equipment-title">Gas Detector</h3>
+                    <p class="equipment-desc">Portable device for detecting hazardous gases in mines</p>
+                    <a href="#" class="view-details" data-id="7">View Details</a>
+                </div>
+            </div>
+
+            <div class="equipment-card" data-category="safety">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Self-Rescuer" class="equipment-img">
+                <div class="equipment-info">
+                    <span class="equipment-category safety">Safety</span>
+                    <h3 class="equipment-title">Self-Rescuer</h3>
+                    <p class="equipment-desc">Emergency breathing apparatus for miners</p>
+                    <a href="#" class="view-details" data-id="8">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipment Detail Modal -->
+        <div class="modal" id="equipmentModal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <img id="modalImage" src="" alt="">
+                <h2 id="modalTitle"></h2>
+                <div class="specs">
+                    <h3>Technical Specifications</h3>
+                    <ul id="modalSpecs"></ul>
+                </div>
+                <div class="usage">
+                    <h3>Primary Usage</h3>
+                    <p id="modalUsage"></p>
+                </div>
+                <div class="working-process">
+                    <h3>Working Process</h3>
+                    <div class="process-steps" id="modalProcess"></div>
+                </div>
+                <div class="applications">
+                    <h3>Typical Applications</h3>
+                    <ul id="modalApplications"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Equipment Data
+        const equipmentData = {
+            1: {
+                title: "Rotary Drill Rig",
+                image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                specs: [
+                    "Drill Diameter: 150-445 mm",
+                    "Max Drilling Depth: 50 m",
+                    "Engine Power: 450 kW",
+                    "Operating Weight: 45,000 kg",
+                    "Feed Force: 35,000 kg"
+                ],
+                usage: "Rotary drill rigs are used for drilling blast holes in open-pit mining operations. They can drill through various rock formations with high precision and efficiency.",
+                process: [
+                    "Positioning: The drill is positioned at the desired location using its crawler tracks.",
+                    "Stabilization: Hydraulic outriggers stabilize the machine for precise drilling.",
+                    "Drilling: The rotary head applies downward pressure while rotating the drill bit.",
+                    "Flushing: Compressed air removes drill cuttings from the hole.",
+                    "Completion: The hole is prepared for explosive charging."
+                ],
+                applications: [
+                    "Blast hole drilling in open-pit mines",
+                    "Exploration drilling",
+                    "Water well drilling",
+                    "Geotechnical investigations"
+                ]
+            },
+            2: {
+                title: "Jumbo Drill",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                specs: [
+                    "Boom Reach: 5.5 m",
+                    "Drill Diameter: 38-102 mm",
+                    "Feed Length: 4.2 m",
+                    "Engine Power: 110 kW",
+                    "Operating Weight: 15,000 kg"
+                ],
+                usage: "Jumbo drills are essential for underground mining operations, used for drilling blast holes and rock bolting in tunnels and stopes.",
+                process: [
+                    "Positioning: The jumbo is positioned using its articulated chassis.",
+                    "Boom Alignment: Hydraulic booms position the drill at the desired angle.",
+                    "Drilling: Simultaneous drilling of multiple holes for efficiency.",
+                    "Dust Suppression: Water spray controls dust during operation.",
+                    "Completion: Holes are ready for explosives or rock bolts."
+                ],
+                applications: [
+                    "Underground mine development",
+                    "Tunnel drilling",
+                    "Rock bolting for roof support",
+                    "Production drilling in stopes"
+                ]
+            },
+            3: {
+                title: "Wheel Loader",
+                image: "https://images.unsplash.com/photo-1617854818583-09e7f077a156?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                specs: [
+                    "Bucket Capacity: 5-20 m³",
+                    "Engine Power: 300-750 kW",
+                    "Operating Weight: 30-80 tons",
+                    "Max Breakout Force: 25,000 kg",
+                    "Travel Speed: 30-40 km/h"
+                ],
+                usage: "Wheel loaders are versatile machines used for loading mined materials onto haul trucks, stockpiling, and various material handling tasks.",
+                process: [
+                    "Approach: The loader approaches the material pile at an angle.",
+                    "Penetration: The bucket penetrates the pile with downward force.",
+                    "Loading: The bucket is lifted while curling to retain material.",
+                    "Transport: The loaded bucket is raised and the machine reverses.",
+                    "Dumping: Material is dumped into a truck or stockpile."
+                ],
+                applications: [
+                    "Loading ore and waste rock",
+                    "Stockpile management",
+                    "Road maintenance in mines",
+                    "Fuel and supply handling"
+                ]
+            },
+            4: {
+                title: "Hydraulic Shovel",
+                image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                specs: [
+                    "Bucket Capacity: 10-50 m³",
+                    "Engine Power: 1000-3000 kW",
+                    "Operating Weight: 100-800 tons",
+                    "Max Digging Depth: 10 m",
+                    "Swing Speed: 4-6 rpm"
+                ],
+                usage: "Hydraulic shovels are high-capacity excavators used for loading overburden and minerals in large-scale mining operations.",
+                process: [
+                    "Positioning: The shovel positions itself near the digging face.",
+                    "Digging: The bucket penetrates the material with hydraulic force.",
+                    "Lifting: The boom lifts the loaded bucket.",
+                    "Swinging: The superstructure swings toward the dump target.",
+                    "Dumping: The bucket opens to release material."
+                ],
+                applications: [
+                    "Overburden removal",
+                    "Ore loading in open-pit mines",
+                    "Trenching",
+                    "Stockpile rehandling"
+                ]
+            },
+            5: {
+                title: "Dump Truck",
+                image: "https://images.unsplash.com/photo-1601579530181-7e74b94b1d0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                specs: [
+                    "Payload Capacity: 100-400 tons",
+                    "Engine Power: 1500-3000 kW",
+                    "Gross Vehicle Weight: 200-600 tons",
+                    "Max Speed: 60 km/h",
+                    "Fuel Capacity: 3000-5000 liters"
+                ],
+                usage: "Dump trucks are the primary haulage equipment in mining operations, transporting ore and waste rock from the pit to processing or waste dumps.",
+                process: [
+                    "Loading: Positioned at loading area (under shovel or loader).",
+                    "Hauling: Travels along designated haul roads to dump site.",
+                    "Dumping: Raises body to discharge load (may be rear or side dump).",
+                    "Return: Returns empty to loading area.",
+                    "Cycle Repeat: Process repeats continuously during shift."
+                ],
+                applications: [
+                    "Ore transportation",
+                    "Waste rock haulage",
+                    "Overburden removal",
+                    "Construction material transport"
+                ]
+            },
+            6: {
+                title: "Articulated Hauler",
+                image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                specs: [
+                    "Payload Capacity: 25-50 tons",
+                    "Engine Power: 300-500 kW",
+                    "Gross Vehicle Weight: 40-80 tons",
+                    "Articulation Angle: ±40°",
+                    "Ground Clearance: 0.5 m"
+                ],
+                usage: "Articulated haulers are versatile machines capable of operating in rough terrain where rigid dump trucks cannot maneuver effectively.",
+                process: [
+                    "Loading: Approaches loader in confined spaces thanks to articulation.",
+                    "Hauling: Navigates rough terrain with excellent traction.",
+                    "Dumping: Can dump in various positions due to articulation.",
+                    "Return: Quickly returns for next load.",
+                    "Cycle Repeat: Continuous operation in difficult conditions."
+                ],
+                applications: [
+                    "Small to medium mining operations",
+                    "Underground mining haulage",
+                    "Construction sites with poor access",
+                    "Quarry operations"
+                ]
+            },
+            7: {
+                title: "Gas Detector",
+                image: "https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                specs: [
+                    "Detection Gases: CH₄, CO, O₂, H₂S, etc.",
+                    "Detection Range: 0-100% LEL/0-1000 ppm",
+                    "Battery Life: 12-24 hours",
+                    "Alarm Types: Visual, audible, vibration",
+                    "IP Rating: IP67"
+                ],
+                usage: "Portable gas detectors are essential safety equipment for monitoring hazardous gas concentrations in underground mines and confined spaces.",
+                process: [
+                    "Pre-use Check: Calibration and battery check before entry.",
+                    "Continuous Monitoring: Worn by miner during entire shift.",
+                    "Alarm Activation: Triggers if gas levels exceed thresholds.",
+                    "Evacuation: Miners exit area when alarm sounds.",
+                    "Post-use: Recharging and maintenance after shift."
+                ],
+                applications: [
+                    "Underground mine atmosphere monitoring",
+                    "Confined space entry",
+                    "Explosive gas detection",
+                    "Oxygen deficiency monitoring"
+                ]
+            },
+            8: {
+                title: "Self-Rescuer",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                specs: [
+                    "Duration: 30-60 minutes",
+                    "Filter Type: CO conversion",
+                    "Weight: 1-2 kg",
+                    "Operating Temp: -30°C to 60°C",
+                    "Storage Life: 5 years"
+                ],
+                usage: "Self-contained self-rescuers provide emergency breathable air when miners are trapped in irrespirable atmospheres.",
+                process: [
+                    "Activation: Remove from carrying case and activate.",
+                    "Mouthpiece: Insert mouthpiece and nose clip.",
+                    "Breathing: Breathe normally through device.",
+                    "Duration: Provides air for specified time.",
+                    "Escape: Move to fresh air within device duration."
+                ],
+                applications: [
+                    "Emergency escape from smoke/fumes",
+                    "CO poisoning protection",
+                    "Mine evacuation equipment",
+                    "Fire fighting backup"
+                ]
+            }
+        };
+
+        // DOM Elements
+        const modal = document.getElementById('equipmentModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const modalSpecs = document.getElementById('modalSpecs');
+        const modalUsage = document.getElementById('modalUsage');
+        const modalProcess = document.getElementById('modalProcess');
+        const modalApplications = document.getElementById('modalApplications');
+        const closeBtn = document.querySelector('.close-btn');
+        const viewDetailsBtns = document.querySelectorAll('.view-details');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+
+        // Show Modal
+        function showModal(id) {
+            const equipment = equipmentData[id];
+            modalTitle.textContent = equipment.title;
+            modalImage.src = equipment.image;
+            modalImage.alt = equipment.title;
+            
+            modalSpecs.innerHTML = '';
+            equipment.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.textContent = spec;
+                modalSpecs.appendChild(li);
+            });
+            
+            modalUsage.textContent = equipment.usage;
+            
+            modalProcess.innerHTML = '';
+            equipment.process.forEach((step, index) => {
+                const div = document.createElement('div');
+                div.className = 'process-step';
+                div.textContent = step;
+                modalProcess.appendChild(div);
+            });
+            
+            modalApplications.innerHTML = '';
+            equipment.applications.forEach(app => {
+                const li = document.createElement('li');
+                li.textContent = app;
+                modalApplications.appendChild(li);
+            });
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event Listeners
+        viewDetailsBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = e.target.getAttribute('data-id');
+                showModal(id);
+            });
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Tab Filtering
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active tab
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.getAttribute('data-category');
+                const cards = document.querySelectorAll('.equipment-card');
+                
+                cards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Jumbo Drill",
+        "category": "drilling",
+        "image": "equipment/jumbo-drill.jpg",
+        "specs": [
+            "Drill diameter: 64-127 mm",
+            "Feed force: 25 kN",
+            "Power: 30 kW"
+        ],
+        "usage": "Used for precision drilling in underground mines for blast holes and rock bolting.",
+        "applications": [
+            "Underground metal mining",
+            "Tunnel construction",
+            "Shaft sinking"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "LHD (Load-Haul-Dump)",
+        "category": "loading",
+        "image": "equipment/lhd.jpg",
+        "specs": [
+            "Bucket capacity: 3-8 m³",
+            "Engine power: 150-300 HP",
+            "Operating weight: 15-30 tons"
+        ],
+        "usage": "For loading broken ore/rock and transporting it short distances in underground mines.",
+        "applications": [
+            "Underground coal mining",
+            "Potash mining",
+            "Metal ore mining"
+        ]
+    },
+    {
+    "id": 3,
+    "name": "Continuous Miner",
+    "category": "extraction",
+    "image": "equipment/continuous-miner.jpg",
+    "specs": [
+      "Cutting width: 3-4.5m",
+      "Engine power: 300-500 kW",
+      "Weight: 30-50 tons"
+    ],
+    "usage": "Machine with a large rotating steel drum equipped with tungsten carbide teeth that scrape coal from the seam.",
+    "applications": [
+      "Underground coal mining",
+      "Potash mining",
+      "Salt mining"
+    ]
+  }
+  
+
+
+]

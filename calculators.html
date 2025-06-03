@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Engineering Calculators | IIT KGP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Filter Section */
+        .filters {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .filter-group label {
+            margin-right: 10px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        select, .search-input {
+            padding: 0.6rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            min-width: 200px;
+            background-color: var(--light-color);
+        }
+        
+        .search-input {
+            padding-left: 35px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%237f8c8d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+        
+        /* Calculators Grid */
+        .calculators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+        
+        .calculator-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .calculator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.2rem;
+            position: relative;
+        }
+        
+        .card-header h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+        
+        .topic-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255,255,255,0.2);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .formula-section {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .formula-section h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-size: 1rem;
+        }
+        
+        .calculator-form {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input {
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .calculate-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .calculate-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .result-section {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e8f4fc;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .result-section h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .calculators-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <span>Mining Calculators</span>
+            </div>
+            <nav>
+                <a href="#" style="color: white; text-decoration: none;">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Mining Engineering Calculators</h1>
+            <p>Comprehensive collection of calculators for various mining engineering topics and field applications</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Filters -->
+        <section class="filters">
+            <div class="filter-group">
+                <label for="topicFilter">Topic:</label>
+                <select id="topicFilter">
+                    <option value="all">All Topics</option>
+                    <option value="rock-mechanics">Rock Mechanics</option>
+                    <option value="mine-ventilation">Mine Ventilation</option>
+                    <option value="mine-planning">Mine Planning</option>
+                    <option value="mineral-processing">Mineral Processing</option>
+                    <option value="drilling-blasting">Drilling & Blasting</option>
+                    <option value="geotechnical">Geotechnical Engineering</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="searchInput">Search:</label>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search calculators...">
+            </div>
+        </section>
+
+        <!-- Calculators Grid -->
+        <div class="calculators-grid" id="calculatorsGrid">
+            <!-- Rock Mechanics Calculators -->
+            <div class="calculator-card" data-topic="rock-mechanics">
+                <div class="card-header">
+                    <span class="topic-tag">Rock Mechanics</span>
+                    <h3>Rock Quality Designation (RQD) Calculator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="formula-section">
+                        <h4>Formula:</h4>
+                        <p>\[ RQD = \frac{\sum \text{Lengths of intact pieces} > 10\text{cm}}{\text{Total length of drill core}} \times 100\% \]</p>
+                        <p>Where:</p>
+                        <ul>
+                            <li>RQD = Rock Quality Designation (percentage)</li>
+                            <li>Only pieces longer than 10cm are considered</li>
+                        </ul>
+                    </div>
+                    <form class="calculator-form" id="rqdCalculator">
+                        <div class="form-group">
+                            <label for="coreLength">Total Core Length (m):</label>
+                            <input type="number" id="coreLength" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="intactLength">Sum of Intact Pieces >10cm (m):</label>
+                            <input type="number" id="intactLength" step="0.01" required>
+                        </div>
+                        <button type="submit" class="calculate-btn">Calculate RQD</button>
+                    </form>
+                    <div class="result-section" id="rqdResult">
+                        <h4>Result:</h4>
+                        <p>RQD: <span id="rqdValue"></span>%</p>
+                        <p>Quality: <span id="rqdQuality"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mine Ventilation Calculators -->
+            <div class="calculator-card" data-topic="mine-ventilation">
+                <div class="card-header">
+                    <span class="topic-tag">Mine Ventilation</span>
+                    <h3>Atkinson's Resistance Calculator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="formula-section">
+                        <h4>Formula:</h4>
+                        <p>\[ R = \frac{k \times L \times P}{A^3} \]</p>
+                        <p>Where:</p>
+                        <ul>
+                            <li>R = Atkinson's resistance (Ns²/m⁸)</li>
+                            <li>k = Friction factor (Ns²/m⁴)</li>
+                            <li>L = Length of airway (m)</li>
+                            <li>P = Perimeter of airway (m)</li>
+                            <li>A = Cross-sectional area of airway (m²)</li>
+                        </ul>
+                    </div>
+                    <form class="calculator-form" id="atkinsonCalculator">
+                        <div class="form-group">
+                            <label for="frictionFactor">Friction Factor (k, Ns²/m⁴):</label>
+                            <input type="number" id="frictionFactor" step="0.0001" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="airwayLength">Airway Length (L, m):</label>
+                            <input type="number" id="airwayLength" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="airwayPerimeter">Airway Perimeter (P, m):</label>
+                            <input type="number" id="airwayPerimeter" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="airwayArea">Cross-sectional Area (A, m²):</label>
+                            <input type="number" id="airwayArea" step="0.01" required>
+                        </div>
+                        <button type="submit" class="calculate-btn">Calculate Resistance</button>
+                    </form>
+                    <div class="result-section" id="atkinsonResult">
+                        <h4>Result:</h4>
+                        <p>Atkinson's Resistance (R): <span id="resistanceValue"></span> Ns²/m⁸</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mine Planning Calculators -->
+            <div class="calculator-card" data-topic="mine-planning">
+                <div class="card-header">
+                    <span class="topic-tag">Mine Planning</span>
+                    <h3>Stripping Ratio Calculator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="formula-section">
+                        <h4>Formula:</h4>
+                        <p>\[ SR = \frac{V_w}{V_o} \]</p>
+                        <p>Where:</p>
+                        <ul>
+                            <li>SR = Stripping Ratio (dimensionless)</li>
+                            <li>V<sub>w</sub> = Volume of waste material (m³ or tons)</li>
+                            <li>V<sub>o</sub> = Volume of ore (m³ or tons)</li>
+                        </ul>
+                    </div>
+                    <form class="calculator-form" id="strippingRatioCalculator">
+                        <div class="form-group">
+                            <label for="wasteVolume">Waste Volume (V<sub>w</sub>, m³ or tons):</label>
+                            <input type="number" id="wasteVolume" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="oreVolume">Ore Volume (V<sub>o</sub>, m³ or tons):</label>
+                            <input type="number" id="oreVolume" step="0.01" required>
+                        </div>
+                        <button type="submit" class="calculate-btn">Calculate Stripping Ratio</button>
+                    </form>
+                    <div class="result-section" id="strippingRatioResult">
+                        <h4>Result:</h4>
+                        <p>Stripping Ratio: <span id="srValue"></span></p>
+                        <p>Economic Feasibility: <span id="srFeasibility"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mineral Processing Calculators -->
+            <div class="calculator-card" data-topic="mineral-processing">
+                <div class="card-header">
+                    <span class="topic-tag">Mineral Processing</span>
+                    <h3>Bond Work Index Calculator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="formula-section">
+                        <h4>Bond's Third Theory Formula:</h4>
+                        <p>\[ W = 10 \times W_i \left( \frac{1}{\sqrt{P_{80}}} - \frac{1}{\sqrt{F_{80}}} \right) \]</p>
+                        <p>Where:</p>
+                        <ul>
+                            <li>W = Specific energy consumption (kWh/ton)</li>
+                            <li>W<sub>i</sub> = Bond Work Index (kWh/ton)</li>
+                            <li>P<sub>80</sub> = 80% passing size of product (µm)</li>
+                            <li>F<sub>80</sub> = 80% passing size of feed (µm)</li>
+                        </ul>
+                    </div>
+                    <form class="calculator-form" id="bondWorkIndexCalculator">
+                        <div class="form-group">
+                            <label for="workIndex">Bond Work Index (W<sub>i</sub>, kWh/ton):</label>
+                            <input type="number" id="workIndex" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedSize">Feed Size (F<sub>80</sub>, µm):</label>
+                            <input type="number" id="feedSize" step="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productSize">Product Size (P<sub>80</sub>, µm):</label>
+                            <input type="number" id="productSize" step="1" required>
+                        </div>
+                        <button type="submit" class="calculate-btn">Calculate Energy</button>
+                    </form>
+                    <div class="result-section" id="bondWorkIndexResult">
+                        <h4>Result:</h4>
+                        <p>Specific Energy Consumption: <span id="energyValue"></span> kWh/ton</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drilling & Blasting Calculators -->
+            <div class="calculator-card" data-topic="drilling-blasting">
+                <div class="card-header">
+                    <span class="topic-tag">Drilling & Blasting</span>
+                    <h3>Powder Factor Calculator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="formula-section">
+                        <h4>Formula:</h4>
+                        <p>\[ PF = \frac{W}{V} \]</p>
+                        <p>Where:</p>
+                        <ul>
+                            <li>PF = Powder Factor (kg/m³ or lb/ton)</li>
+                            <li>W = Weight of explosive used (kg or lb)</li>
+                            <li>V = Volume of rock broken (m³ or tons)</li>
+                        </ul>
+                    </div>
+                    <form class="calculator-form" id="powderFactorCalculator">
+                        <div class="form-group">
+                            <label for="explosiveWeight">Explosive Weight (W, kg):</label>
+                            <input type="number" id="explosiveWeight" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rockVolume">Rock Volume (V, m³):</label>
+                            <input type="number" id="rockVolume" step="0.01" required>
+                        </div>
+                        <button type="submit" class="calculate-btn">Calculate Powder Factor</button>
+                    </form>
+                    <div class="result-section" id="powderFactorResult">
+                        <h4>Result:</h4>
+                        <p>Powder Factor: <span id="pfValue"></span> kg/m³</p>
+                        <p>Typical Range: <span id="pfRange"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Geotechnical Calculators -->
+            <div class="calculator-card" data-topic="geotechnical">
+                <div class="card-header">
+                    <span class="topic-tag">Geotechnical</span>
+                    <h3>Factor of Safety Calculator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="formula-section">
+                        <h4>Formula:</h4>
+                        <p>\[ FoS = \frac{\text{Resisting Forces}}{\text{Driving Forces}} \]</p>
+                        <p>For slope stability:</p>
+                        <p>\[ FoS = \frac{c \times A + (W \times \cos \theta - u) \times \tan \phi}{W \times \sin \theta} \]</p>
+                        <p>Where:</p>
+                        <ul>
+                            <li>FoS = Factor of Safety (dimensionless)</li>
+                            <li>c = Cohesion (kPa or psi)</li>
+                            <li>A = Area of failure surface (m² or ft²)</li>
+                            <li>W = Weight of soil mass (kN or lb)</li>
+                            <li>θ = Slope angle (degrees)</li>
+                            <li>u = Pore water pressure (kPa or psi)</li>
+                            <li>φ = Angle of internal friction (degrees)</li>
+                        </ul>
+                    </div>
+                    <form class="calculator-form" id="safetyFactorCalculator">
+                        <div class="form-group">
+                            <label for="cohesion">Cohesion (c, kPa):</label>
+                            <input type="number" id="cohesion" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="failureArea">Failure Surface Area (A, m²):</label>
+                            <input type="number" id="failureArea" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="soilWeight">Soil Mass Weight (W, kN):</label>
+                            <input type="number" id="soilWeight" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="slopeAngle">Slope Angle (θ, degrees):</label>
+                            <input type="number" id="slopeAngle" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="waterPressure">Pore Water Pressure (u, kPa):</label>
+                            <input type="number" id="waterPressure" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="frictionAngle">Friction Angle (φ, degrees):</label>
+                            <input type="number" id="frictionAngle" step="0.1" required>
+                        </div>
+                        <button type="submit" class="calculate-btn">Calculate FoS</button>
+                    </form>
+                    <div class="result-section" id="safetyFactorResult">
+                        <h4>Result:</h4>
+                        <p>Factor of Safety: <span id="fosValue"></span></p>
+                        <p>Stability: <span id="fosStability"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Mining Engineering Calculators</p>
+            <p>Department of Mining Engineering, IIT Kharagpur</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">&copy; 2023 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Calculator Functions
+        document.addEventListener('DOMContentLoaded', function() {
+            // RQD Calculator
+            document.getElementById('rqdCalculator').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const coreLength = parseFloat(document.getElementById('coreLength').value);
+                const intactLength = parseFloat(document.getElementById('intactLength').value);
+                
+                if (coreLength <= 0 || intactLength < 0 || intactLength > coreLength) {
+                    alert('Please enter valid values (Core Length > 0, Intact Length ≤ Core Length)');
+                    return;
+                }
+                
+                const rqd = (intactLength / coreLength) * 100;
+                let quality;
+                
+                if (rqd < 25) quality = "Very Poor";
+                else if (rqd < 50) quality = "Poor";
+                else if (rqd < 75) quality = "Fair";
+                else if (rqd < 90) quality = "Good";
+                else quality = "Excellent";
+                
+                document.getElementById('rqdValue').textContent = rqd.toFixed(2);
+                document.getElementById('rqdQuality').textContent = quality;
+                document.getElementById('rqdResult').style.display = 'block';
+            });
+            
+            // Atkinson's Resistance Calculator
+            document.getElementById('atkinsonCalculator').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const k = parseFloat(document.getElementById('frictionFactor').value);
+                const L = parseFloat(document.getElementById('airwayLength').value);
+                const P = parseFloat(document.getElementById('airwayPerimeter').value);
+                const A = parseFloat(document.getElementById('airwayArea').value);
+                
+                if (k <= 0 || L <= 0 || P <= 0 || A <= 0) {
+                    alert('All values must be greater than zero');
+                    return;
+                }
+                
+                const R = (k * L * P) / Math.pow(A, 3);
+                document.getElementById('resistanceValue').textContent = R.toFixed(6);
+                document.getElementById('atkinsonResult').style.display = 'block';
+            });
+            
+            // Stripping Ratio Calculator
+            document.getElementById('strippingRatioCalculator').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const Vw = parseFloat(document.getElementById('wasteVolume').value);
+                const Vo = parseFloat(document.getElementById('oreVolume').value);
+                
+                if (Vw < 0 || Vo <= 0) {
+                    alert('Waste Volume must be ≥ 0 and Ore Volume must be > 0');
+                    return;
+                }
+                
+                const SR = Vw / Vo;
+                let feasibility;
+                
+                if (SR < 1) feasibility = "Highly Economical";
+                else if (SR < 3) feasibility = "Economical";
+                else if (SR < 5) feasibility = "Marginal";
+                else feasibility = "Uneconomical";
+                
+                document.getElementById('srValue').textContent = SR.toFixed(2);
+                document.getElementById('srFeasibility').textContent = feasibility;
+                document.getElementById('strippingRatioResult').style.display = 'block';
+            });
+            
+            // Bond Work Index Calculator
+            document.getElementById('bondWorkIndexCalculator').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const Wi = parseFloat(document.getElementById('workIndex').value);
+                const F80 = parseFloat(document.getElementById('feedSize').value);
+                const P80 = parseFloat(document.getElementById('productSize').value);
+                
+                if (Wi <= 0 || F80 <= 0 || P80 <= 0 || P80 >= F80) {
+                    alert('Work Index must be > 0, Feed Size > Product Size > 0');
+                    return;
+                }
+                
+                const W = 10 * Wi * (1/Math.sqrt(P80) - 1/Math.sqrt(F80));
+                document.getElementById('energyValue').textContent = W.toFixed(3);
+                document.getElementById('bondWorkIndexResult').style.display = 'block';
+            });
+            
+            // Powder Factor Calculator
+            document.getElementById('powderFactorCalculator').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const W = parseFloat(document.getElementById('explosiveWeight').value);
+                const V = parseFloat(document.getElementById('rockVolume').value);
+                
+                if (W <= 0 || V <= 0) {
+                    alert('Both values must be greater than zero');
+                    return;
+                }
+                
+                const PF = W / V;
+                let range;
+                
+                if (PF < 0.25) range = "Very light (0.15-0.25 kg/m³ for secondary blasting)";
+                else if (PF < 0.5) range = "Light (0.25-0.5 kg/m³ for underground mining)";
+                else if (PF < 1.0) range = "Medium (0.5-1.0 kg/m³ for surface mining)";
+                else range = "Heavy (>1.0 kg/m³ for very hard rock)";
+                
+                document.getElementById('pfValue').textContent = PF.toFixed(3);
+                document.getElementById('pfRange').textContent = range;
+                document.getElementById('powderFactorResult').style.display = 'block';
+            });
+            
+            // Factor of Safety Calculator
+            document.getElementById('safetyFactorCalculator').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const c = parseFloat(document.getElementById('cohesion').value);
+                const A = parseFloat(document.getElementById('failureArea').value);
+                const W = parseFloat(document.getElementById('soilWeight').value);
+                const θ = parseFloat(document.getElementById('slopeAngle').value) * Math.PI / 180;
+                const u = parseFloat(document.getElementById('waterPressure').value);
+                const φ = parseFloat(document.getElementById('frictionAngle').value) * Math.PI / 180;
+                
+                if (c < 0 || A <= 0 || W <= 0 || θ <= 0 || u < 0 || φ <= 0) {
+                    alert('All values must be positive (except cohesion and water pressure which can be zero)');
+                    return;
+                }
+                
+                const numerator = c * A + (W * Math.cos(θ) - u) * Math.tan(φ);
+                const denominator = W * Math.sin(θ);
+                
+                if (denominator <= 0) {
+                    alert('Invalid slope angle - results in non-positive denominator');
+                    return;
+                }
+                
+                const FoS = numerator / denominator;
+                let stability;
+                
+                if (FoS < 1.0) stability = "Unstable (Failure likely)";
+                else if (FoS < 1.3) stability = "Marginally Stable";
+                else if (FoS < 1.5) stability = "Stable (Temporary works)";
+                else stability = "Very Stable (Permanent works)";
+                
+                document.getElementById('fosValue').textContent = FoS.toFixed(3);
+                document.getElementById('fosStability').textContent = stability;
+                document.getElementById('safetyFactorResult').style.display = 'block';
+            });
+            
+            // Filter functionality
+            const topicFilter = document.getElementById('topicFilter');
+            const searchInput = document.getElementById('searchInput');
+            const calculatorCards = document.querySelectorAll('.calculator-card');
+            
+            function filterCalculators() {
+                const selectedTopic = topicFilter.value;
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                calculatorCards.forEach(card => {
+                    const topic = card.getAttribute('data-topic');
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const matchesTopic = selectedTopic === 'all' || topic === selectedTopic;
+                    const matchesSearch = title.includes(searchTerm);
+                    
+                    if (matchesTopic && matchesSearch) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            topicFilter.addEventListener('change', filterCalculators);
+            searchInput.addEventListener('input', filterCalculators);
+        });
+    </script>
+</body>
+</html>

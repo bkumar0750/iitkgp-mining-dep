@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Mining Engineering | IIT Kharagpur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --gold-color: #FFD700;
+            --maroon-color: #800000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--gold-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--gold-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://www.iitkgp.ac.in/files/header5.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--gold-color);
+            color: var(--primary-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--gold-color);
+        }
+        
+        .hero-btn:hover {
+            background-color: transparent;
+            color: var(--gold-color);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold-color);
+            margin: 0.5rem auto 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Facilities Section */
+        .facilities-section {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .facility-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .facility-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .facility-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .facility-card:hover .facility-img img {
+            transform: scale(1.1);
+        }
+        
+        .facility-content {
+            padding: 1.5rem;
+        }
+        
+        .facility-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .facility-content p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .facility-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        /* Events Section */
+        .events-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .events-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .events-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .event-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .event-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .event-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .event-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            top: 20px;
+        }
+        
+        .event-item:nth-child(odd)::after {
+            right: -12px;
+        }
+        
+        .event-item:nth-child(even)::after {
+            left: -12px;
+        }
+        
+        .event-content {
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .event-date {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .event-desc {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .event-link {
+            display: inline-block;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .event-link:hover {
+            color: var(--primary-color);
+        }
+        
+        /* News Section */
+        .news-section {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .news-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-date {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .news-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .read-more {
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold-color);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--gold-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gold-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .events-timeline::before {
+                left: 30px;
+            }
+            
+            .event-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .event-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .event-item::after {
+                left: 20px;
+            }
+            
+            .event-item:nth-child(even)::after {
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>Mining Engineering</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Department of Mining Engineering</h1>
+            <p>Pioneering excellence in mining education, research, and innovation since 1956</p>
+            <a href="#about" class="hero-btn">Explore Department</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Our Department</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Leading the Way in Mining Education</h3>
+                    <p>The Department of Mining Engineering at IIT Kharagpur, established in 1956, is the first of its kind in India and continues to be a pioneer in mining education and research. Our department has consistently maintained its position as the top-ranked mining engineering program in the country.</p>
+                    <p>We offer comprehensive undergraduate, postgraduate, and doctoral programs that combine theoretical knowledge with practical applications, preparing students to become leaders in the mining industry.</p>
+                    <p>Our distinguished faculty members are internationally recognized experts in their fields, actively engaged in cutting-edge research and industry collaborations.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://www.iitkgp.ac.in/department/ME" alt="Mining Engineering Department Building">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities-section" id="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our World-Class Facilities</h2>
+            </div>
+            <div class="facilities-grid">
+                <!-- Facility 1 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://www.iitkgp.ac.in/files/labs/mining-lab.jpg" alt="Rock Mechanics Laboratory">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Advanced Rock Mechanics Laboratory</h3>
+                        <p>Equipped with state-of-the-art testing machines including MTS servo-controlled systems, triaxial testing apparatus, and acoustic emission monitoring systems for comprehensive rock property analysis.</p>
+                        <div class="facility-meta">
+                            <span><i class="fas fa-flask"></i> Research</span>
+                            <span><i class="fas fa-user-graduate"></i> Graduate Studies</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Facility 2 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://www.iitkgp.ac.in/files/labs/mine-ventilation.jpg" alt="Mine Ventilation Laboratory">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Mine Ventilation & Environmental Engineering Lab</h3>
+                        <p>Features a fully operational mine ventilation network simulator, gas detection systems, and computational fluid dynamics software for studying air flow patterns and pollutant dispersion in mines.</p>
+                        <div class="facility-meta">
+                            <span><i class="fas fa-wind"></i> Ventilation</span>
+                            <span><i class="fas fa-cloud"></i> Environment</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Facility 3 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://www.iitkgp.ac.in/files/labs/mineral-processing.jpg" alt="Mineral Processing Laboratory">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Mineral Processing & Beneficiation Center</h3>
+                        <p>Houses advanced equipment for comminution, classification, gravity separation, flotation, and magnetic separation processes, along with analytical instruments for mineral characterization.</p>
+                        <div class="facility-meta">
+                            <span><i class="fas fa-filter"></i> Processing</span>
+                            <span><i class="fas fa-gem"></i> Beneficiation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Facility 4 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://www.iitkgp.ac.in/files/labs/simulation-lab.jpg" alt="Mine Simulation Laboratory">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Mine Planning & Simulation Laboratory</h3>
+                        <p>Equipped with high-end workstations running industry-standard software like SURPAC, DATAMINE, and VULCAN for mine design, planning, and 3D visualization of mining operations.</p>
+                        <div class="facility-meta">
+                            <span><i class="fas fa-laptop-code"></i> Software</span>
+                            <span><i class="fas fa-cube"></i> 3D Modeling</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Facility 5 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://www.iitkgp.ac.in/files/labs/drone-lab.jpg" alt="Drone Technology Laboratory">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Drone & Remote Sensing Technology Center</h3>
+                        <p>Features advanced UAV systems with LiDAR and multispectral sensors for mine surveying, volumetric calculations, and environmental monitoring applications.</p>
+                        <div class="facility-meta">
+                            <span><i class="fas fa-drone"></i> Drones</span>
+                            <span><i class="fas fa-satellite-dish"></i> Remote Sensing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Facility 6 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://www.iitkgp.ac.in/files/labs/safety-lab.jpg" alt="Mine Safety Laboratory">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Mine Safety & Disaster Management Center</h3>
+                        <p>Includes a virtual reality mine safety training system, gas explosion simulation setup, and emergency response equipment for comprehensive safety education and research.</p>
+                        <div class="facility-meta">
+                            <span><i class="fas fa-hard-hat"></i> Safety</span>
+                            <span><i class="fas fa-fire-extinguisher"></i> Disaster Mgmt.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Events & Workshops</h2>
+            </div>
+            <div class="events-timeline">
+                <!-- Event 1 -->
+                <div class="event-item">
+                    <div class="event-content">
+                        <div class="event-date">October 15-17, 2023</div>
+                        <h3 class="event-title">International Conference on Sustainable Mining Practices</h3>
+                        <p class="event-desc">Join global experts discussing innovations in sustainable mining, environmental management, and community engagement in mineral development.</p>
+                        <a href="#" class="event-link">Learn More →</a>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="event-item">
+                    <div class="event-content">
+                        <div class="event-date">November 5-9, 2023</div>
+                        <h3 class="event-title">Mine Ventilation Workshop</h3>
+                        <p class="event-desc">Hands-on training on advanced ventilation network analysis, diesel particulate control, and heat stress management in deep mines.</p>
+                        <a href="#" class="event-link">Register Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="event-item">
+                    <div class="event-content">
+                        <div class="event-date">December 12, 2023</div>
+                        <h3 class="event-title">Annual Mining Symposium</h3>
+                        <p class="event-desc">Showcasing student research projects, industry innovations, and keynote addresses from mining industry leaders.</p>
+                        <a href="#" class="event-link">View Agenda →</a>
+                    </div>
+                </div>
+                
+                <!-- Event 4 -->
+                <div class="event-item">
+                    <div class="event-content">
+                        <div class="event-date">January 20-22, 2024</div>
+                        <h3 class="event-title">Rock Mechanics Short Course</h3>
+                        <p class="event-desc">Comprehensive course covering numerical modeling in rock mechanics, supported by practical sessions using FLAC3D and RS3 software.</p>
+                        <a href="#" class="event-link">Apply Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Event 5 -->
+                <div class="event-item">
+                    <div class="event-content">
+                        <div class="event-date">February 8-10, 2024</div>
+                        <h3 class="event-title">Mineral Processing Technology Workshop</h3>
+                        <p class="event-desc">Focusing on advances in comminution, classification, and separation technologies for improved mineral recovery.</p>
+                        <a href="#" class="event-link">More Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section" id="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>Department News & Announcements</h2>
+            </div>
+            <div class="news-grid">
+                <!-- News 1 -->
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://www.iitkgp.ac.in/files/news/research-grant.jpg" alt="Research Grant">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">September 12, 2023</div>
+                        <h3 class="news-title">Department Secures ₹5.2 Crore Research Grant for Sustainable Mining</h3>
+                        <p class="news-excerpt">The funding will support development of AI-based solutions for reducing environmental impact of surface mining operations.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                
+                <!-- News 2 -->
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://www.iitkgp.ac.in/files/news/student-achievement.jpg" alt="Student Achievement">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">August 28, 2023</div>
+                        <h3 class="news-title">Mining Students Win National Design Competition</h3>
+                        <p class="news-excerpt">Team developed innovative solution for mine waste utilization, beating entries from 32 institutions across India.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                
+                <!-- News 3 -->
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://www.iitkgp.ac.in/files/news/faculty-award.jpg" alt="Faculty Award">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">July 15, 2023</div>
+                        <h3 class="news-title">Prof. Sharma Receives Prestigious National Mining Award</h3>
+                        <p class="news-excerpt">Recognized for groundbreaking contributions to mine safety through development of early warning systems for roof falls.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1 -->
+                <div class="footer-col">
+                    <h3>Department of Mining Engineering</h3>
+                    <p>Indian Institute of Technology Kharagpur<br>
+                    Kharagpur, West Bengal - 721302, India</p>
+                    <p>Continuing our legacy of excellence in mining education and research since 1956.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Academic Programs</a></li>
+                        <li><a href="#">Research Areas</a></li>
+                        <li><a href="#">Faculty Directory</a></li>
+                        <li><a href="#">Student Portal</a></li>
+                        <li><a href="#">Alumni Network</a></li>
+                        <li><a href="#">Industry Collaboration</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 3222 282324</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>mining@iitkgp.ac.in</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Department Office: Room 301, Mining Building</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Office Hours: Mon-Fri, 9:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Department of Mining Engineering, IIT Kharagpur. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Sticky header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+        
+        // Animation for facility cards when they come into view
+        const facilityCards = document.querySelectorAll('.facility-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        facilityCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

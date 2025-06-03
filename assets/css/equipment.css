@@ -1,0 +1,103 @@
+/* Equipment Page Styles */
+.equipment-hero {
+    background: linear-gradient(rgba(0,0,0,0.7)), url('../images/equipment-bg.jpg');
+    height: 40vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 10px;
+    padding: 2% 10%;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    background: #ddd;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 2% 10%;
+}
+
+.equipment-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.equipment-card:hover {
+    transform: translateY(-5px);
+}
+
+.equipment-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.equipment-info {
+    padding: 15px;
+}
+
+.equipment-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#modalImage {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.specs, .usage, .applications {
+    margin-bottom: 20px;
+}
